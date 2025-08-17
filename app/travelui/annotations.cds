@@ -27,12 +27,19 @@ annotate service.Travels with @(
                 Value: endDate,
             },
             {
-                $Type: 'UI.DataField',
-                Value: bookingFee,
+                $Type        : 'UI.DataField',
+                Value        : bookingFee,
+                Label        : 'Booking Fee',
+                DisplayFormat: 'Currency',
+                UnitOfMeasure: currencyCode_code,
             },
             {
-                $Type: 'UI.DataField',
-                Value: totalPrice,
+                $Type                  : 'UI.DataField',
+                Value                  : totalPrice,
+                Label                  : 'Total Price',
+                DisplayFormat          : 'Currency',
+                UnitOfMeasure          : currencyCode_code,
+                ![@Common.FieldControl]: #ReadOnly,
             },
             {
                 $Type: 'UI.DataField',
@@ -44,8 +51,9 @@ annotate service.Travels with @(
                 Value: description,
             },
             {
-                $Type: 'UI.DataField',
-                Value: overallStatus_ID,
+                $Type                  : 'UI.DataField',
+                Value                  : overallStatus_ID,
+                ![@Common.FieldControl]: #ReadOnly,
             },
             {
                 $Type : 'UI.DataFieldForAction',
@@ -86,9 +94,10 @@ annotate service.Travels with @(
             Label: 'Customer',
         },
         {
-            $Type: 'UI.DataField',
-            Value: overallStatus.statusText,
-            Label: 'Overall Status',
+            $Type                  : 'UI.DataField',
+            Value                  : overallStatus.statusText,
+            Label                  : 'Overall Status',
+            ![@Common.FieldControl]: #ReadOnly,
         },
         {
             $Type: 'UI.DataField',
@@ -99,12 +108,19 @@ annotate service.Travels with @(
             Value: endDate,
         },
         {
-            $Type: 'UI.DataField',
-            Value: bookingFee,
+            $Type        : 'UI.DataField',
+            Value        : bookingFee,
+            Label        : 'Booking Fee',
+            DisplayFormat: 'Currency',
+            UnitOfMeasure: currencyCode_code,
         },
         {
-            $Type: 'UI.DataField',
-            Value: totalPrice,
+            $Type                  : 'UI.DataField',
+            Value                  : totalPrice,
+            Label                  : 'Total Price',
+            DisplayFormat          : 'Currency',
+            UnitOfMeasure          : currencyCode_code,
+            ![@Common.FieldControl]: #ReadOnly,
         },
         {
             $Type : 'UI.DataFieldForAction',
@@ -125,8 +141,7 @@ annotate service.Travels with @(
             $Type: 'UI.DataField',
             Value: travelID,
         },
-        TypeImageUrl  : 'https://cdn.pixabay.com/photo/2014/10/02/08/30/honey-bee-469560_1280.png',
-        ImageUrl      : 'REPLACE_WITH_IMAGE_URL_PATH',
+        ImageUrl      : 'https://cdn.pixabay.com/photo/2014/10/02/08/30/honey-bee-469560_1280.png',
     },
 );
 
@@ -233,19 +248,22 @@ annotate service.Travels with {
 annotate service.Bookings with @(
     UI.LineItem                     : [
         {
-            $Type: 'UI.DataField',
-            Value: bookingID,
-            Label: 'Booking ID',
+            $Type                  : 'UI.DataField',
+            Value                  : bookingID,
+            Label                  : 'Booking ID',
+            ![@Common.FieldControl]: #ReadOnly,
         },
         {
-            $Type: 'UI.DataField',
-            Value: bookingDate,
-            Label: 'Booking Date',
+            $Type                  : 'UI.DataField',
+            Value                  : bookingDate,
+            Label                  : 'Booking Date',
+            ![@Common.FieldControl]: #ReadOnly,
         },
         {
-            $Type: 'UI.DataField',
-            Value: bookingStatus.statusText,
-            Label: 'Booking Status',
+            $Type                  : 'UI.DataField',
+            Value                  : bookingStatus.statusText,
+            Label                  : 'Booking Status',
+            ![@Common.FieldControl]: #ReadOnly,
         },
         {
             $Type: 'UI.DataField',
@@ -268,9 +286,19 @@ annotate service.Bookings with @(
             Label: 'Flight Date',
         },
         {
-            $Type: 'UI.DataField',
-            Value: flightPrice,
-            Label: 'Flight Price',
+            $Type        : 'UI.DataField',
+            Value        : flightPrice,
+            Label        : 'Flight Price',
+            DisplayFormat: 'Currency',
+            UnitOfMeasure: currencyCode_code,
+        },
+        {
+            $Type                  : 'UI.DataField',
+            Value                  : travels.totalPrice,
+            Label                  : 'Total Price',
+            DisplayFormat          : 'Currency',
+            UnitOfMeasure          : currencyCode_code,
+            ![@Common.FieldControl]: #ReadOnly,
         },
         {
             $Type : 'UI.DataFieldForAction',
@@ -297,19 +325,20 @@ annotate service.Bookings with @(
             $Type: 'UI.DataField',
             Value: travels.customerID.name
         },
-        TypeImageUrl  : 'https://pixabay.com/illustrations/oranges-tangerines-fruits-citrus-379375',
-        ImageUrl      : 'https://pixabay.com/illustrations/oranges-tangerines-fruits-citrus-379375',
+        ImageUrl      : 'https://cdn.pixabay.com/photo/2014/06/29/12/52/oranges-379375_1280.jpg',
     },
     UI.FieldGroup #BookingFieldGroup: {
         $Type: 'UI.FieldGroupType',
         Data : [
             {
-                $Type: 'UI.DataField',
-                Value: bookingID,
+                $Type                  : 'UI.DataField',
+                Value                  : bookingID,
+                ![@Common.FieldControl]: #ReadOnly,
             },
             {
-                $Type: 'UI.DataField',
-                Value: bookingDate,
+                $Type                  : 'UI.DataField',
+                Value                  : bookingDate,
+                ![@Common.FieldControl]: #ReadOnly,
             },
             {
                 $Type: 'UI.DataField',
@@ -328,8 +357,17 @@ annotate service.Bookings with @(
                 Value: flightPrice,
             },
             {
-                $Type: 'UI.DataField',
-                Value: bookingStatus_ID,
+                $Type                  : 'UI.DataField',
+                Value                  : travels.totalPrice,
+                Label                  : 'Total Price',
+                DisplayFormat          : 'Currency',
+                UnitOfMeasure          : currencyCode_code,
+                ![@Common.FieldControl]: #ReadOnly,
+            },
+            {
+                $Type                  : 'UI.DataField',
+                Value                  : bookingStatus_ID,
+                ![@Common.FieldControl]: #ReadOnly,
             },
             {
                 $Type : 'UI.DataFieldForAction',

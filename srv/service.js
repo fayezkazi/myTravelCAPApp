@@ -4,9 +4,72 @@ module.exports = cds.service.impl(async function () {
 
     const { Travels, Bookings, Statuses } = this.entities;
 
+    //At Travel Create, set the overallStatus to '1' (New) and Copy the bookingFee to totalPrice
+    this.before('CREATE', 'Travels', async (req) => {
+        debugger;
+
+        //Find the ID for the Status 1 from Statuses
+        const status = await SELECT.one.from(Statuses).where({ status: '1' });
+        if (status) {
+            req.data.overallStatus_ID = status.ID;
+        }
+
+        req.data.totalPrice = req.data.bookingFee;
+
+        // Handle deep insert - set booking status for any bookings created with travel
+        if (req.data.booking && Array.isArray(req.data.booking)) {
+            console.log('Deep insert detected - setting booking status for', req.data.booking.length, 'bookings');
+            const bookingStatus = await SELECT.one.from(Statuses).where({ status: '6' });
+            if (bookingStatus) {
+                req.data.booking.forEach(booking => {
+                    if (!booking.bookingStatus_ID) {
+                        booking.bookingStatus_ID = bookingStatus.ID;
+                        console.log('Set booking status in deep insert:', booking.bookingID);
+                    }
+                });
+            }
+        }
+    });
+
+    // ...existing code...
+
+    this.before('UPDATE', 'Travels', async (req, next, results) => {
+        // Get the parent Travel ID
+        console.log("Travel UPDATE triggered");
+        var maxBooking = 0;
+        var aBookings = [];
+        var sBookings = {};
+        
+        const travelID = req.data.ID;
+
+        if (!travelID) {
+            console.error('No Travel ID found');
+            return;
+        }
+
+        // Find the max bookingID for this travel
+        for (const booking of req.data.booking || []) {
+            if (booking.bookingID) {
+                maxBooking = booking.bookingID;
+                aBookings.push(booking);
+            } else {
+                maxBooking = Number(maxBooking) + 1;
+                sBookings = booking;
+                sBookings.bookingID = maxBooking;
+                aBookings.push(sBookings);
+            }
+        }
+
+        if (aBookings.length > 0) {
+            console.log('New bookings to be created:', aBookings);
+            req.data.booking = aBookings;
+        }
+        return req;
+    });
+
     // Add calculated field for button availability
     this.after('READ', 'Travels', async (results) => {
-        debugger;
+        console.log('Handling READ for Travels:', results);
         if (!Array.isArray(results)) results = [results];
 
         for (let travel of results) {
@@ -24,7 +87,7 @@ module.exports = cds.service.impl(async function () {
 
     // set flag Booking canBookingStatusChange
     this.after('READ', 'Bookings', async (results) => {
-        debugger;
+        console.log('Handling READ for Bookings:', results);
         if (!Array.isArray(results)) results = [results];
 
         for (let booking of results) {
@@ -174,11 +237,11 @@ module.exports = cds.service.impl(async function () {
             // Return the updated booking with expanded travel info
             const updatedBooking = await SELECT.one.from(Bookings, booking => {
                 booking`*`,
-                booking.travels(travel => travel`*`)
+                    booking.travels(travel => travel`*`)
             }).where({ ID: bookingKey });
-            
+
             //set flag canBookingStatusChange
-            updatedBooking.canBookingStatusChange = false;            
+            updatedBooking.canBookingStatusChange = false;
             console.log('Updated booking:', updatedBooking);
 
             return updatedBooking;
@@ -256,7 +319,7 @@ module.exports = cds.service.impl(async function () {
             // Return the updated booking with expanded travel info
             const updatedBooking = await SELECT.one.from(Bookings, booking => {
                 booking`*`,
-                booking.travels(travel => travel`*`)
+                    booking.travels(travel => travel`*`)
             }).where({ ID: bookingKey });
 
             //set flag canBookingStatusChange
@@ -269,6 +332,19 @@ module.exports = cds.service.impl(async function () {
             req.error(500, `Error cancelling booking status: ${error.message}`);
         }
 
+    });
+
+    // Action handler for setBookingDefaults
+    this.on('setBookingDefaults', async (req) => {
+
+        // Set booking status to '6' (Pending)
+        const status = await SELECT.one.from(this.entities.Statuses).where({ status: '6' });
+
+        return {
+            bookingStatus_ID: status ? status.ID : null,
+            bookingDate: new Date().toISOString().split('T')[0],
+            currencyCode: 'USD'
+        };
     });
 
 });

@@ -55,8 +55,8 @@ entity Travels : cuid, managed {
 }
 
 entity Bookings : cuid, managed {
-  bookingID: String(10) @(Common.Label : 'Booking ID') @mandatory;
-  bookingDate: Date @(Common.Label : 'Booking Date');
+  bookingID: String(10) @(Common.Label : 'Booking ID');
+  bookingDate: Date @(Common.Label : 'Booking Date') default CURRENT_DATE;
   airlineID: Association to Carriers @(Common.Label : 'Airline ID');
   connectionID: Association to Connections @(Common.Label : 'Connection ID');
   flightDate: Date  @(Common.Label : 'Flight Date');

@@ -3,6 +3,9 @@ using { myTravelCapApp as my } from '../db/schema.cds';
 @path: '/service/myTravelCapApp'
 @requires: 'authenticated-user'
 service myTravelCapAppSrv {
+
+  function setBookingDefaults() returns Bookings;
+
   @odata.draft.enabled
   entity Customers as projection on my.Customers;
   @odata.draft.enabled
@@ -21,7 +24,9 @@ service myTravelCapAppSrv {
     @Core.OperationAvailable : {$edmJson: {$Eq: [{$Path: 'canSetComplete'}, true]}}
     action setTravelStatusToComplete() returns Travels;
   };
-  entity Bookings as projection on my.Bookings {
+  entity Bookings @(Common.DefaultValuesFunction: 'setBookingDefaults')
+  as projection on my.Bookings 
+  {
     *,
     virtual null as canBookingStatusChange : Boolean
   } actions {
