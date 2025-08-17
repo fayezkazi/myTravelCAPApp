@@ -1,0 +1,51 @@
+ID;customerID;name;address;phoneNumber;email
+20c19648-9890-4891-8256-6c4b0f0a398d;C001;John Doe;1234 Elm St, Springfield, IL;555-0123;john.doe@example.com
+0673818a-56fe-4ccc-aba2-ef2020066fd9;C002;Jane Smith;5678 Oak St, Metropolis, IL;555-0456;jane.smith@example.com
+7aeec61a-b581-4e19-aff5-d82ed54a1bab;C003;Emily Johnson;9101 Pine St, Gotham, NY;555-0789;emily.johnson@example.com
+5db8c346-958b-409d-8560-ce7b69e4fc64;C004;Michael Brown;2345 Maple St, Star City, CA;555-1011;michael.brown@example.com
+f637dabd-b413-457f-b642-d51e0fb1acca;C005;Sarah Davis;6789 Cedar St, Central City, MO;555-1213;sarah.davis@example.com
+c7270e65-05c6-43b7-9ffd-987e65ccb032;C006;David Wilson;1357 Birch St, Smallville, KS;555-1415;david.wilson@example.com
+3ce52bd3-ba55-480d-9fe2-84ca83cbc3dd;C007;Laura Garcia;2468 Walnut St, Hill Valley, CA;555-1617;laura.garcia@example.com
+6abe4587-7c5c-404e-afde-334a4c48a52e;C008;James Martinez;3579 Spruce St, Pleasantville, NJ;555-1819;james.martinez@example.com
+648fde72-9da5-4a54-8c1a-a398d92cf563;C009;Patricia Rodriguez;4680 Fir St, River City, TX;555-2021;patricia.rodriguez@example.com
+5517eaa6-f1c7-4e90-9aad-48c8f32896d4;C010;Robert Lee;5791 Chestnut St, Sunnydale, CA;555-2223;robert.lee@example.com
+da0b6a04-a6a8-4d0e-9119-761c1ab8b797;C011;Linda Walker;6802 Ash St, Hillcrest, CA;555-2425;linda.walker@example.com
+400ea7a2-d667-4759-9be9-e1c712cb4461;C012;William Hall;7913 Poplar St, Oakwood, OH;555-2627;william.hall@example.com
+13b05d49-2bbe-41d8-ba54-15eb9689485d;C013;Elizabeth Allen;8024 Sycamore St, Riverton, UT;555-2829;elizabeth.allen@example.com
+0a4608eb-a6b8-4d00-b04d-63ff410d0554;C014;Charles Young;9135 Larch St, Lakeview, MI;555-3031;charles.young@example.com
+b234899c-d584-40b1-9812-b886048cfdbf;C015;Jessica King;0246 Elm St, Springfield, MA;555-3233;jessica.king@example.com
+25fddb4e-1123-47c8-bf7c-7491b1b06df1;C016;Thomas Wright;1357 Maple St, Brookfield, WI;555-3435;thomas.wright@example.com
+01e2fe69-0fe3-408f-af07-b5275ce68ae4;C017;Susan Scott;2468 Oak St, Waverly, IA;555-3637;susan.scott@example.com
+857423f6-62b6-409e-aef4-aae6491600b1;C018;Daniel Green;3579 Pine St, Eastland, TX;555-3839;daniel.green@example.com
+c0251d0a-5bd6-4e7d-ba4c-d6f07294974d;C019;Karen Adams;4680 Cedar St, Fairview, OH;555-4041;karen.adams@example.com
+c132833e-aeab-41fe-86b4-a7c04ade60bc;C020;Joseph Nelson;5791 Birch St, New Haven, CT;555-4243;joseph.nelson@example.com
+1a69a27f-c078-4c2b-9a4e-5ad37de330cf;C021;Nancy Carter;6802 Walnut St, Kingston, NY;555-4445;nancy.carter@example.com
+466b7ac3-6dcc-4285-ac30-8ca2b95c7926;C022;Steven Mitchell;7913 Fir St, Maplewood, NJ;555-4647;steven.mitchell@example.com
+87af7c86-18b2-48f1-9e46-d6cec40a3814;C023;Barbara Perez;8024 Spruce St, Richmond, VA;555-4849;barbara.perez@example.com
+8511fa3f-026e-420f-8239-88b89ef5a395;C024;Kevin Roberts;9135 Ash St, Seattle, WA;555-5051;kevin.roberts@example.com
+245c0549-d299-4180-ac24-936285d440ee;C025;Angela Turner;0246 Larch St, San Antonio, TX;555-5253;angela.turner@example.com
+05ae0736-9da5-4fd9-b013-a203fb1413f7;C026;Andrew Phillips;1357 Chestnut St, Denver, CO;555-5455;andrew.phillips@example.com
+6ea3b1a7-a074-4254-b626-f03ee3be29e3;C027;Megan Campbell;2468 Elm St, Atlanta, GA;555-5657;megan.campbell@example.com
+1d3c0620-ce56-4eef-9b22-c7d4c4606716;C028;Brian Parker;3579 Maple St, Orlando, FL;555-5859;brian.parker@example.com
+5e92aaf3-47e7-40a3-bee6-02084a2ca31d;C029;Michelle Evans;4680 Oak St, Tampa, FL;555-6061;michelle.evans@example.com
+36556e41-00ff-492e-80d3-520c87f8452e;C030;Joshua Edwards;5791 Pine St, Miami, FL;555-6263;joshua.edwards@example.com
+74279888-f749-46f4-8e97-63940bc1a794;C031;Samantha Collins;6802 Cedar St, Boston, MA;555-6465;samantha.collins@example.com
+9d33939c-ea16-41e3-89d5-3e841a2b8f3d;C032;Patrick Stewart;7913 Birch St, Philadelphia, PA;555-6667;patrick.stewart@example.com
+0e640070-fe1c-4703-9d44-e909f12f82cd;C033;Shirley Sanchez;8024 Walnut St, Washington, DC;555-6869;shirley.sanchez@example.com
+f9ecc9df-f7a4-4004-a9c8-891b3de6b7a1;C034;Gary Morris;9135 Fir St, Minneapolis, MN;555-7071;gary.morris@example.com
+07a3ac16-8cad-45f7-a3a3-dacecc5d3bfb;C035;Deborah Rogers;0246 Spruce St, Baltimore, MD;555-7273;deborah.rogers@example.com
+de2162c4-4125-4570-ab77-992251b3642c;C036;Ronald Reed;1357 Ash St, Charlotte, NC;555-7475;ronald.reed@example.com
+1c595ad5-e1d8-4f28-adfc-e082a63b9cb2;C037;Cynthia Cook;2468 Larch St, Phoenix, AZ;555-7677;cynthia.cook@example.com
+93d57935-68c6-4135-9286-b4b7240982c5;C038;Kenneth Bell;3579 Chestnut St, Nashville, TN;555-7879;kenneth.bell@example.com
+554521d3-1793-4c26-a5c2-d9ad6ee5950c;C039;Angela Rivera;4680 Elm St, Indianapolis, IN;555-8081;angela.rivera@example.com
+a4e6bfaf-2340-46dc-8bb3-d0db28d1d8ca;C040;Samuel Cooper;5791 Maple St, Columbus, OH;555-8283;samuel.cooper@example.com
+d219891c-b0df-4631-a12f-7949b03b1ec3;C041;Laura Bailey;6802 Oak St, San Diego, CA;555-8485;laura.bailey@example.com
+aeffa7f4-e914-487f-8ed9-d7d90567aafc;C042;Frank Ward;7913 Pine St, Kansas City, MO;555-8687;frank.ward@example.com
+e5961e14-414c-4aff-8d0f-7691f31292f8;C043;Diane Hughes;8024 Cedar St, Salt Lake City, UT;555-8889;diane.hughes@example.com
+cdcbed09-ff46-43c9-9c0e-95cebef8d435;C044;Aaron Wood;9135 Birch St, Portland, OR;555-9091;aaron.wood@example.com
+e9464cc4-6dfe-45d6-b09e-c345ae64cdcd;C045;Barbara Bennett;0246 Walnut St, Omaha, NE;555-9293;barbara.bennett@example.com
+3f8a68cc-fd7e-46ce-9bf2-515e313a1bd9;C046;Steven Gray;1357 Fir St, Richmond, VA;555-9495;steven.gray@example.com
+72f82fa2-0642-4577-9fa0-8801a82dfaad;C047;Kimberly James;2468 Spruce St, Tucson, AZ;555-9697;kimberly.james@example.com
+2d404a8d-6a5f-4976-b871-2027121a7e27;C048;Gregory Watson;3579 Ash St, Albuquerque, NM;555-9899;gregory.watson@example.com
+f651bf8e-6756-497b-b4ee-84b25040b401;C049;Jessica Brooks;4680 Larch St, Virginia Beach, VA;555-0001;jessica.brooks@example.com
+a4684f3c-94c3-490a-ac98-156d3ddcfc83;C050;Timothy Kelly;5791 Chestnut St, Little Rock, AR;555-1112;timothy.kelly@example.com

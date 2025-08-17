@@ -1,0 +1,21 @@
+ID;airlineID_ID;connectionID;departureAirport;destinationAirport
+20c19648-9890-4891-8256-6c4b0f0a398d;20c19648-9890-4891-8256-6c4b0f0a398d;C01;Los Angeles International Airport;John F. Kennedy International Airport
+0673818a-56fe-4ccc-aba2-ef2020066fd9;20c19648-9890-4891-8256-6c4b0f0a398d;C02;John F. Kennedy International Airport;Chicago O'Hare International Airport
+7aeec61a-b581-4e19-aff5-d82ed54a1bab;20c19648-9890-4891-8256-6c4b0f0a398d;C03;Chicago O'Hare International Airport;San Francisco International Airport
+5db8c346-958b-409d-8560-ce7b69e4fc64;20c19648-9890-4891-8256-6c4b0f0a398d;C04;San Francisco International Airport;Los Angeles International Airport
+f637dabd-b413-457f-b642-d51e0fb1acca;0673818a-56fe-4ccc-aba2-ef2020066fd9;D01;Atlanta International Airport;Miami International Airport
+c7270e65-05c6-43b7-9ffd-987e65ccb032;0673818a-56fe-4ccc-aba2-ef2020066fd9;D02;Miami International Airport;Seattle-Tacoma International Airport
+3ce52bd3-ba55-480d-9fe2-84ca83cbc3dd;0673818a-56fe-4ccc-aba2-ef2020066fd9;D03;Seattle-Tacoma International Airport;Newark Liberty International Airport
+6abe4587-7c5c-404e-afde-334a4c48a52e;0673818a-56fe-4ccc-aba2-ef2020066fd9;D04;Newark Liberty International Airport;Atlanta International Airport
+648fde72-9da5-4a54-8c1a-a398d92cf563;7aeec61a-b581-4e19-aff5-d82ed54a1bab;E01;Denver International Airport;Los Angeles International Airport
+5517eaa6-f1c7-4e90-9aad-48c8f32896d4;7aeec61a-b581-4e19-aff5-d82ed54a1bab;E02;Los Angeles International Airport;Chicago O'Hare International Airport
+da0b6a04-a6a8-4d0e-9119-761c1ab8b797;7aeec61a-b581-4e19-aff5-d82ed54a1bab;E03;Chicago O'Hare International Airport;Houston George Bush Intercontinental Airport
+400ea7a2-d667-4759-9be9-e1c712cb4461;7aeec61a-b581-4e19-aff5-d82ed54a1bab;E04;Houston George Bush Intercontinental Airport;Denver International Airport
+13b05d49-2bbe-41d8-ba54-15eb9689485d;5db8c346-958b-409d-8560-ce7b69e4fc64;F01;Dallas Love Field;Chicago Midway International Airport
+0a4608eb-a6b8-4d00-b04d-63ff410d0554;5db8c346-958b-409d-8560-ce7b69e4fc64;F02;Chicago Midway International Airport;Los Angeles International Airport
+b234899c-d584-40b1-9812-b886048cfdbf;5db8c346-958b-409d-8560-ce7b69e4fc64;F03;Los Angeles International Airport;Las Vegas McCarran International Airport
+25fddb4e-1123-47c8-bf7c-7491b1b06df1;5db8c346-958b-409d-8560-ce7b69e4fc64;F04;Las Vegas McCarran International Airport;Dallas Love Field
+01e2fe69-0fe3-408f-af07-b5275ce68ae4;f637dabd-b413-457f-b642-d51e0fb1acca;G01;London Heathrow Airport;Paris Charles de Gaulle Airport
+857423f6-62b6-409e-aef4-aae6491600b1;f637dabd-b413-457f-b642-d51e0fb1acca;G02;Paris Charles de Gaulle Airport;Berlin Tegel Airport
+c0251d0a-5bd6-4e7d-ba4c-d6f07294974d;f637dabd-b413-457f-b642-d51e0fb1acca;G03;Berlin Tegel Airport;London Heathrow Airport
+c132833e-aeab-41fe-86b4-a7c04ade60bc;f637dabd-b413-457f-b642-d51e0fb1acca;G04;London Heathrow Airport;Amsterdam Schiphol Airport
