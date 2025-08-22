@@ -2,12 +2,10 @@ const cds = require('@sap/cds');
 
 module.exports = cds.service.impl(async function () {
 
-    const { Travels, Bookings, Statuses } = this.entities;
+    const { Travels, Bookings, Statuses, Connections } = this.entities;
 
     //At Travel Create, set the overallStatus to '1' (New) and Copy the bookingFee to totalPrice
     this.before('CREATE', 'Travels', async (req) => {
-        debugger;
-
         //Find the ID for the Status 1 from Statuses
         const status = await SELECT.one.from(Statuses).where({ status: '1' });
         if (status) {
@@ -39,7 +37,7 @@ module.exports = cds.service.impl(async function () {
         var maxBooking = 0;
         var aBookings = [];
         var sBookings = {};
-        
+
         const travelID = req.data.ID;
 
         if (!travelID) {
@@ -57,6 +55,21 @@ module.exports = cds.service.impl(async function () {
                 sBookings = booking;
                 sBookings.bookingID = maxBooking;
                 aBookings.push(sBookings);
+            }
+        };
+
+        // If the Travel Status is New and If any Booking Records exists for this Travel,
+        //First Get the OverallStatus_ID from Travel
+        const travelStatusID = req.data.overallStatus_ID;
+        if (travelStatusID) {
+            //Now find the Status Number from Statuses
+            const travelStatus = await SELECT.one.from(Statuses).where({ ID: travelStatusID });
+            //Then Set the Travel Status to 'In Progress'
+            if (travelStatus && travelStatus.status === '1' && aBookings.length > 0) {
+                const inProgressStatus = await SELECT.one.from(Statuses).where({ status: '2' });
+                if (inProgressStatus) {
+                    req.data.overallStatus_ID = inProgressStatus.ID;
+                }
             }
         }
 
@@ -78,7 +91,7 @@ module.exports = cds.service.impl(async function () {
                     // Get status details
                     const status = await SELECT.one.from(Statuses).where({ ID: travel.overallStatus.ID });
                     // Set canSetComplete to true only for status 1 or 2
-                    debugger;
+   
                     travel.canSetComplete = status && (status.status === '1' || status.status === '2');
                     travel.isUpdatable = status && status.status == '4'; // Disable edit/delete for status '4'
                     console.log(travel.canSetComplete, 'Status:', status, 'Travel:', travel.travelID);
@@ -94,12 +107,12 @@ module.exports = cds.service.impl(async function () {
                                 break;
                             case '4': // Completed
                                 travel.criticality = 3; // Green
-                                break;    
+                                break;
                             case '5': // Canceled
                                 travel.criticality = 1; // Red
-                                break;                                                             
+                                break;
                             default:
-                                travel.criticality = 0; // Neutral
+                                travel.criticality = 2; // Orange
                                 break;
                         }
                     }
@@ -122,7 +135,7 @@ module.exports = cds.service.impl(async function () {
                     booking.canBookingStatusChange = status && (status.status === '6');
                     console.log(booking.canBookingStatusChange, 'Status:', status, 'Booking:', booking.bookingID);
 
-                   if (status) {
+                    if (status) {
                         switch (status.status) {
                             case '1': // New
                                 booking.criticality = 0; // Grey
@@ -132,15 +145,28 @@ module.exports = cds.service.impl(async function () {
                                 break;
                             case '4': // Completed
                                 booking.criticality = 3; // Green
-                                break;    
+                                break;
                             case '5': // Canceled
                                 booking.criticality = 1; // Red
-                                break;                                                             
+                                break;
                             default:
-                                booking.criticality = 0; // Neutral
+                                booking.criticality = 2; // Neutral
                                 break;
                         }
-                    }                    
+                    }
+
+                    if (booking && booking.connectionID_ID) {
+                        // Get connection details
+                        const connection = await SELECT.one.from(Connections).where({ ID: booking.connectionID_ID });
+                        if (connection) {
+                            booking.connectionID = connection;
+                        }
+
+                        // Calculate route as "departureAirport - destinationAirport"
+                        const departure = booking.connectionID.departureAirport || '';
+                        const destination = booking.connectionID.destinationAirport || '';
+                        booking.route = departure && destination ? `${departure} - ${destination}` : '';
+                    }
                 }
             }
         }
@@ -148,10 +174,7 @@ module.exports = cds.service.impl(async function () {
 
     // Action handler for setTravelStatusToComplete
     this.on('setTravelStatusToComplete', async (req) => {
-
-        debugger;
         const travelKey = req.params[0].ID;
-
         try {
             console.log('Updating travel with ID:', travelKey);
 
@@ -216,10 +239,8 @@ module.exports = cds.service.impl(async function () {
     });
 
     this.on('setBookingStatusConfirm', async (req) => {
-        debugger;
+
         try {
-
-
             // get the Booking Key
             const bookingKey = req.params[1].ID;
 

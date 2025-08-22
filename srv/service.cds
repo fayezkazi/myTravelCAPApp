@@ -32,7 +32,8 @@ service myTravelCapAppSrv {
   {
     *,
     virtual null as canBookingStatusChange : Boolean,
-    virtual null as criticality : Integer
+    virtual null as criticality : Integer,
+    virtual null as route : String @(Common.Label: 'Route')
   } actions {
     @(
       Core.OperationAvailable : {$edmJson: {$Eq: [{$Path: 'canBookingStatusChange'}, true]}},

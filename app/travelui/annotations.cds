@@ -17,7 +17,7 @@ annotate service.Travels with @(
             },
             {
                 $Type: 'UI.DataFieldWithUrl',
-                Value: customerID.name,
+                Value: customerID_ID,
                 Label: 'Customer',
                 Url: '#/Customers(ID={customerID_ID},IsActiveEntity=true)'
             },
@@ -337,7 +337,8 @@ annotate service.Bookings with @(
             $Type: 'UI.DataField',
             Value: travels.customerID.name
         },
-        ImageUrl      : 'https://cdn.pixabay.com/photo/2014/06/29/12/52/oranges-379375_1280.jpg',
+        //ImageUrl      : 'https://cdn.pixabay.com/photo/2014/06/29/12/52/oranges-379375_1280.jpg',
+        ImageUrl      : airlineID.airlineURL
     },
     UI.FieldGroup #BookingFieldGroup: {
         $Type: 'UI.FieldGroupType',
@@ -416,11 +417,7 @@ annotate service.Bookings with {
         Common.SemanticObject : 'Carriers'
     );
     connectionID  @(
-        Common.Text           : {
-            $value : connectionID.departureAirport,
-            $concat: ' - ',
-            $value2: connectionID.destinationAirport
-        },
+        Common.Text           : route,
         Common.TextArrangement: #TextOnly
     );
     bookingStatus @(
