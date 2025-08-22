@@ -1,5 +1,7 @@
 namespace myTravelCapApp;
 using { cuid, managed , Currency } from '@sap/cds/common';
+using { travel.common } from './travelCommons';
+
 
 @assert.unique: { customerID: [customerID] }
 entity Customers : cuid {
@@ -11,13 +13,14 @@ entity Customers : cuid {
 }
 
 @assert.unique: { airlineID: [airlineID] }
-entity Carriers : cuid {
+entity Carriers : cuid{
   airlineID: String(4) @(Common.Label : 'Airline ID') @mandatory;
   airlineName: String(50) @(Common.Label : 'Airline Name');
+  airlineURL: String @(UI.IsImageURL);
 }
 
 @assert.unique: { connectionID: [connectionID] }
-entity Connections : cuid {
+entity Connections : cuid, common.Amount {
   airlineID: Association To Carriers  @(Common.Label : 'Airline ID');
   connectionID: String(4) @(Common.Label : 'Connection ID') @mandatory;
   departureAirport: String(10) @(Common.Label : 'Airport From');

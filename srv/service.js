@@ -80,6 +80,27 @@ module.exports = cds.service.impl(async function () {
                     // Set canSetComplete to true only for status 1 or 2
                     travel.canSetComplete = status && (status.status === '1' || status.status === '2');
                     console.log(travel.canSetComplete, 'Status:', status, 'Travel:', travel.travelID);
+
+                    // Set criticality for status highlighting
+                    if (status) {
+                        switch (status.status) {
+                            case '1': // New
+                                travel.criticality = 0; // Grey
+                                break;
+                            case '3': // Confirmed
+                                travel.criticality = 3; // Green
+                                break;
+                            case '4': // Completed
+                                travel.criticality = 3; // Green
+                                break;    
+                            case '5': // Canceled
+                                travel.criticality = 1; // Red
+                                break;                                                             
+                            default:
+                                travel.criticality = 0; // Neutral
+                                break;
+                        }
+                    }
                 }
             }
         }
@@ -98,6 +119,26 @@ module.exports = cds.service.impl(async function () {
                     // Set canBookingStatusChange to true only for status is 6
                     booking.canBookingStatusChange = status && (status.status === '6');
                     console.log(booking.canBookingStatusChange, 'Status:', status, 'Booking:', booking.bookingID);
+
+                   if (status) {
+                        switch (status.status) {
+                            case '1': // New
+                                booking.criticality = 0; // Grey
+                                break;
+                            case '3': // Confirmed
+                                booking.criticality = 3; // Green
+                                break;
+                            case '4': // Completed
+                                booking.criticality = 3; // Green
+                                break;    
+                            case '5': // Canceled
+                                booking.criticality = 1; // Red
+                                break;                                                             
+                            default:
+                                booking.criticality = 0; // Neutral
+                                break;
+                        }
+                    }                    
                 }
             }
         }

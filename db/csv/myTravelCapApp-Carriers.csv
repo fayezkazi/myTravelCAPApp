@@ -1,11 +1,11 @@
-ID;airlineID;airlineName
-20c19648-9890-4891-8256-6c4b0f0a398d;AA;American Airlines
-0673818a-56fe-4ccc-aba2-ef2020066fd9;DL;Delta Airlines
-7aeec61a-b581-4e19-aff5-d82ed54a1bab;UA;United Airlines
-5db8c346-958b-409d-8560-ce7b69e4fc64;SW;Southwest Airlines
-f637dabd-b413-457f-b642-d51e0fb1acca;BA;British Airways
-c7270e65-05c6-43b7-9ffd-987e65ccb032;AF;Air France
-3ce52bd3-ba55-480d-9fe2-84ca83cbc3dd;LH;Lufthansa
-6abe4587-7c5c-404e-afde-334a4c48a52e;EK;Emirates
-648fde72-9da5-4a54-8c1a-a398d92cf563;AI;Air India
-5517eaa6-f1c7-4e90-9aad-48c8f32896d4;JL;Japan Airlines
+ID;airlineID;airlineName;airlineURL
+20c19648-9890-4891-8256-6c4b0f0a398d;AA;American Airlines;https://static.dezeen.com/uploads/2013/01/dezeen_American-Airlines-logo-and-livery_3.gif
+0673818a-56fe-4ccc-aba2-ef2020066fd9;DL;Delta Airlines;https://img.icons8.com/?size=100&id=2NxzV9OhaYiQ&format=png&color=000000
+7aeec61a-b581-4e19-aff5-d82ed54a1bab;UA;United Airlines;https://img.icons8.com/?size=100&id=de31Jx2vDSMJ&format=png&color=000000
+5db8c346-958b-409d-8560-ce7b69e4fc64;SW;Southwest Airlines;https://img.icons8.com/?size=100&id=5L4nuXrC9uCR&format=png&color=000000
+f637dabd-b413-457f-b642-d51e0fb1acca;BA;British Airways;https://img.icons8.com/?size=100&id=20915&format=png&color=000000
+c7270e65-05c6-43b7-9ffd-987e65ccb032;AF;Air France;https://1000logos.net/wp-content/uploads/2020/03/Air-France-Logo-768x480.png
+3ce52bd3-ba55-480d-9fe2-84ca83cbc3dd;LH;Lufthansa;https://img.icons8.com/?size=160&id=3XxcHk69AyvK&format=png
+6abe4587-7c5c-404e-afde-334a4c48a52e;EK;Emirates;https://e7.pngegg.com/pngimages/493/928/png-clipart-fly-emirates-logo-the-emirates-group-airline-fly-miscellaneous-cdr-thumbnail.png
+648fde72-9da5-4a54-8c1a-a398d92cf563;AI;Air India;https://www.uxdt.nic.in/wp-content/uploads/2020/06/Preview-2.png?x84154
+5517eaa6-f1c7-4e90-9aad-48c8f32896d4;JL;Japan Airlines;https://thumbs.dreamstime.com/b/japan-airlines-co-ltd-also-known-as-nikk%C3%A5%C2%8D-flag-carrier-airline-headquartered-shinagawa-tokyo-its-main-hubs-138609649.jpg?w=768

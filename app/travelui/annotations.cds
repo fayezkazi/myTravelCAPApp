@@ -51,19 +51,23 @@ annotate service.Travels with @(
                 Value: description,
             },
             {
-                $Type                  : 'UI.DataField',
-                Value                  : overallStatus_ID,
-                ![@Common.FieldControl]: #ReadOnly,
-            },
-            {
-                $Type : 'UI.DataFieldForAction',
-                Action: 'myTravelCapAppSrv.setTravelStatusToComplete',
-                Label : 'Set Complete',
-                ID    : 'idSetComplete',
-            },
+                $Type                    : 'UI.DataField',
+                Value                    : overallStatus_ID,
+                ![@Common.FieldControl]  : #ReadOnly,
+                Criticality              : criticality,
+                CriticalityRepresentation: #WithIcon
+            }
         ],
         Label: 'Travel Overview',
     },
+    UI.Identification : [
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action: 'myTravelCapAppSrv.setTravelStatusToComplete',
+            Label : 'Set Complete',
+            ID    : 'idSetComplete',
+        }
+    ],
     UI.Facets                    : [
         {
             $Type : 'UI.ReferenceFacet',
@@ -94,10 +98,12 @@ annotate service.Travels with @(
             Label: 'Customer',
         },
         {
-            $Type                  : 'UI.DataField',
-            Value                  : overallStatus.statusText,
-            Label                  : 'Overall Status',
-            ![@Common.FieldControl]: #ReadOnly,
+            $Type                    : 'UI.DataField',
+            Value                    : overallStatus.statusText,
+            Label                    : 'Overall Status',
+            ![@Common.FieldControl]  : #ReadOnly,
+            Criticality              : criticality,
+            CriticalityRepresentation: #WithIcon
         },
         {
             $Type: 'UI.DataField',
@@ -141,7 +147,7 @@ annotate service.Travels with @(
             $Type: 'UI.DataField',
             Value: travelID,
         },
-        ImageUrl      : 'https://cdn.pixabay.com/photo/2014/10/02/08/30/honey-bee-469560_1280.png',
+        ImageUrl      : 'https://media.istockphoto.com/id/1137971264/vector/airplane-fly-out-logo-plane-taking-off-stylized-sign.webp?s=1024x1024&w=is&k=20&c=j1SM20pOkldHsg_gMpeMBGqdg6E81hZhFGdtFSPjvpg=',
     },
 );
 
@@ -244,9 +250,22 @@ annotate service.Travels with {
     );
 }
 
+// --- Begin of  Overall Status Text Formatting -- //
+
+
+/* Removed duplicate definition of criticality to resolve compile error */
+
+//-------End of Overall Status Text Formatting -- //
+
 
 annotate service.Bookings with @(
     UI.LineItem                     : [
+        {
+            $Type: 'UI.DataField',
+            Value: airlineID.airlineURL,
+            Label: 'Airline'
+        },
+
         {
             $Type                  : 'UI.DataField',
             Value                  : bookingID,
@@ -260,10 +279,12 @@ annotate service.Bookings with @(
             ![@Common.FieldControl]: #ReadOnly,
         },
         {
-            $Type                  : 'UI.DataField',
-            Value                  : bookingStatus.statusText,
-            Label                  : 'Booking Status',
-            ![@Common.FieldControl]: #ReadOnly,
+            $Type                    : 'UI.DataField',
+            Value                    : bookingStatus.statusText,
+            Label                    : 'Booking Status',
+            ![@Common.FieldControl]  : #ReadOnly,
+            Criticality              : criticality,
+            CriticalityRepresentation: #WithIcon
         },
         {
             $Type: 'UI.DataField',
@@ -312,6 +333,7 @@ annotate service.Bookings with @(
             Label : 'Cancel Booking',
             ID    : 'idSetBookingCancel',
         },
+
     ],
     UI.HeaderInfo                   : {
         $Type         : 'UI.HeaderInfoType',
@@ -365,14 +387,17 @@ annotate service.Bookings with @(
                 ![@Common.FieldControl]: #ReadOnly,
             },
             {
-                $Type                  : 'UI.DataField',
-                Value                  : bookingStatus_ID,
-                ![@Common.FieldControl]: #ReadOnly,
+                $Type                    : 'UI.DataField',
+                Value                    : bookingStatus_ID,
+                ![@Common.FieldControl]  : #ReadOnly,
+                Criticality              : criticality,
+                CriticalityRepresentation: #WithIcon
             },
             {
                 $Type : 'UI.DataFieldForAction',
                 Action: 'myTravelCapAppSrv.setBookingStatusConfirm',
                 Label : 'Confirm Booking',
+                ShortLabel: 'Confirm',
                 ID    : 'idSetBookingConfirm',
             },
             {
@@ -444,6 +469,21 @@ annotate service.Bookings with {
                 ValueListProperty: 'ID',
                 LocalDataProperty: connectionID_ID,
             },
+            {
+                $Type            : 'Common.ValueListParameterInOut',
+                ValueListProperty: 'airlineID_ID',
+                LocalDataProperty: airlineID_ID,
+            },
+            {
+                $Type            : 'Common.ValueListParameterInOut',
+                ValueListProperty: 'flightPrice',
+                LocalDataProperty: flightPrice,
+            },   
+            {
+                $Type            : 'Common.ValueListParameterInOut',
+                ValueListProperty: 'CURRENCY_code',
+                LocalDataProperty: currencyCode_code,
+            },            
             {
                 $Type            : 'Common.ValueListParameterDisplayOnly',
                 ValueListProperty: 'connectionID',

@@ -19,16 +19,19 @@ service myTravelCapAppSrv {
   @odata.draft.enabled
   entity Travels as projection on my.Travels {
     *,
-    virtual null as canSetComplete : Boolean
+    virtual null as canSetComplete : Boolean,
+    virtual null as criticality : Integer
   } actions {
     @Core.OperationAvailable : {$edmJson: {$Eq: [{$Path: 'canSetComplete'}, true]}}
+    @UI.Button: { Icon: 'sap-icon://accept' }
     action setTravelStatusToComplete() returns Travels;
   };
   entity Bookings @(Common.DefaultValuesFunction: 'setBookingDefaults')
   as projection on my.Bookings 
   {
     *,
-    virtual null as canBookingStatusChange : Boolean
+    virtual null as canBookingStatusChange : Boolean,
+    virtual null as criticality : Integer
   } actions {
     @(
       Core.OperationAvailable : {$edmJson: {$Eq: [{$Path: 'canBookingStatusChange'}, true]}},
