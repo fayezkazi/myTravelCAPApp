@@ -20,7 +20,8 @@ service myTravelCapAppSrv {
   entity Travels as projection on my.Travels {
     *,
     virtual null as canSetComplete : Boolean,
-    virtual null as criticality : Integer
+    virtual null as criticality : Integer,
+    virtual null as isUpdatable: Boolean
   } actions {
     @Core.OperationAvailable : {$edmJson: {$Eq: [{$Path: 'canSetComplete'}, true]}}
     @UI.Button: { Icon: 'sap-icon://accept' }

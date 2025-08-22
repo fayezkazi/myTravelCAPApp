@@ -98,6 +98,16 @@
           "pattern": "Travels({key})/booking({key2}):?query:",
           "name": "BookingsObjectPage",
           "target": "BookingsObjectPage"
+        },
+        {
+          "pattern": "Carriers({key}):?query:",
+          "name": "CarriersObjectPage",
+          "target": "CarriersObjectPage"
+        },
+        {
+          "pattern": "Customers({key}):?query:",
+          "name": "CustomerObjectPage",
+          "target": "CustomerObjectPage"
         }
       ],
       "targets": {
@@ -113,6 +123,11 @@
                 "Travels": {
                   "detail": {
                     "route": "TravelsObjectPage"
+                  }
+                },
+                "customerID": {
+                  "detail": {
+                    "route": "CustomerObjectPage"
                   }
                 }
               },
@@ -139,6 +154,11 @@
                   "detail": {
                     "route": "BookingsObjectPage"
                   }
+                },
+                "customerID": {
+                  "detail": {
+                    "route": "CustomerObjectPage"
+                  }
                 }
               }
             }
@@ -151,7 +171,36 @@
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/Travels/booking"
+              "contextPath": "/Travels/booking",
+              "navigation": {
+                "airlineID": {
+                  "detail": {
+                    "route": "CarriersObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "CarriersObjectPage": {
+          "type": "Component",
+          "id": "CarriersObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Carriers"
+            }
+          }
+        },
+        "CustomerObjectPage": {
+          "type": "Component",
+          "id": "CustomerObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Customers"
             }
           }
         }

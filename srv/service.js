@@ -78,7 +78,9 @@ module.exports = cds.service.impl(async function () {
                     // Get status details
                     const status = await SELECT.one.from(Statuses).where({ ID: travel.overallStatus.ID });
                     // Set canSetComplete to true only for status 1 or 2
+                    debugger;
                     travel.canSetComplete = status && (status.status === '1' || status.status === '2');
+                    travel.isUpdatable = status && status.status == '4'; // Disable edit/delete for status '4'
                     console.log(travel.canSetComplete, 'Status:', status, 'Travel:', travel.travelID);
 
                     // Set criticality for status highlighting

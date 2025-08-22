@@ -1,6 +1,8 @@
 using myTravelCapAppSrv as service from '../../srv/service';
 
 annotate service.Travels with @(
+    UI.UpdateHidden: isUpdatable,
+    UI.DeleteHidden: isUpdatable,
     UI.FieldGroup #GeneratedGroup: {
         $Type: 'UI.FieldGroupType',
         Data : [
@@ -14,9 +16,10 @@ annotate service.Travels with @(
                 Label: 'Agency',
             },
             {
-                $Type: 'UI.DataField',
-                Value: customerID_ID,
+                $Type: 'UI.DataFieldWithUrl',
+                Value: customerID.name,
                 Label: 'Customer',
+                Url: '#/Customers(ID={customerID_ID},IsActiveEntity=true)'
             },
             {
                 $Type: 'UI.DataField',
@@ -93,9 +96,10 @@ annotate service.Travels with @(
             Label: 'Agency',
         },
         {
-            $Type: 'UI.DataField',
+            $Type: 'UI.DataFieldWithUrl',
             Value: customerID.name,
             Label: 'Customer',
+            Url: '#/Customers(ID={customerID_ID},IsActiveEntity=true)'
         },
         {
             $Type                    : 'UI.DataField',
@@ -127,12 +131,6 @@ annotate service.Travels with @(
             DisplayFormat          : 'Currency',
             UnitOfMeasure          : currencyCode_code,
             ![@Common.FieldControl]: #ReadOnly,
-        },
-        {
-            $Type : 'UI.DataFieldForAction',
-            Action: 'myTravelCapAppSrv.setTravelStatusToComplete',
-            Label : 'Set Complete',
-            ID    : 'idSetComplete',
         },
     ],
     UI.HeaderInfo                : {
@@ -250,14 +248,6 @@ annotate service.Travels with {
     );
 }
 
-// --- Begin of  Overall Status Text Formatting -- //
-
-
-/* Removed duplicate definition of criticality to resolve compile error */
-
-//-------End of Overall Status Text Formatting -- //
-
-
 annotate service.Bookings with @(
     UI.LineItem                     : [
         {
@@ -363,8 +353,10 @@ annotate service.Bookings with @(
                 ![@Common.FieldControl]: #ReadOnly,
             },
             {
-                $Type: 'UI.DataField',
-                Value: airlineID_ID,
+                $Type: 'UI.DataFieldWithUrl',
+                Value: airlineID.airlineName,
+                Label: 'Airline',
+                Url: '#/Carriers(ID={airlineID_ID},IsActiveEntity=true)'
             },
             {
                 $Type: 'UI.DataField',
@@ -420,7 +412,8 @@ annotate service.Bookings with @(
 annotate service.Bookings with {
     airlineID     @(
         Common.Text           : airlineID.airlineName,
-        Common.TextArrangement: #TextOnly
+        Common.TextArrangement: #TextOnly,
+        Common.SemanticObject : 'Carriers'
     );
     connectionID  @(
         Common.Text           : {
@@ -526,3 +519,116 @@ annotate service.Bookings with {
         Label          : 'Booking Status',
     }
 };
+
+//annotate Carriers 
+//Field Groups
+
+//annotate Carriers
+//Field Groups
+annotate service.Carriers with @(
+    UI.LineItem: [
+        {
+            $Type: 'UI.DataField',
+            Value: airlineID,
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: airlineName,
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: airlineURL,
+        }
+    ],
+    UI.FieldGroup #CarrierFieldGroup: {
+        $Type: 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type: 'UI.DataField',
+                Value: airlineID,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: airlineName,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: airlineURL,
+            },
+        ],
+    },
+    UI.Facets: [
+        {
+            $Type: 'UI.ReferenceFacet',
+            Label: 'Carrier Information',
+            ID: 'CarrierInfo',
+            Target: '@UI.FieldGroup#CarrierFieldGroup',
+        }
+    ],
+    UI.HeaderInfo: {
+        $Type: 'UI.HeaderInfoType',
+        TypeName: 'Carrier',
+        Title: {
+            $Type: 'UI.DataField',
+            Value: airlineName
+        },
+        Description: {
+            $Type: 'UI.DataField',
+            Value: airlineID
+        }
+    }
+);
+
+//annotate Connections
+
+annotate service.Customers with @(
+  UI.HeaderInfo: {
+    $Type: 'UI.HeaderInfoType',
+    TypeName: 'Customer',
+    TypeNamePlural: 'Customers',
+    Title: {
+      $Type: 'UI.DataField',
+      Value: name
+    },
+    Description: {
+      $Type: 'UI.DataField',
+      Value: customerID
+    }
+  },
+  UI.FieldGroup #CustomerDetails: {
+    $Type: 'UI.FieldGroupType',
+    Data: [
+      {
+        $Type: 'UI.DataField',
+        Value: customerID,
+        Label: 'Customer ID'
+      },
+      {
+        $Type: 'UI.DataField',
+        Value: name,
+        Label: 'Name'
+      },
+      {
+        $Type: 'UI.DataField',
+        Value: address,
+        Label: 'Address'
+      },
+      {
+        $Type: 'UI.DataField',
+        Value: phoneNumber,
+        Label: 'Phone Number'
+      },
+      {
+        $Type: 'UI.DataField',
+        Value: email,
+        Label: 'Email'
+      }
+    ]
+  },
+    UI.Facets                       : [{
+        $Type : 'UI.ReferenceFacet',
+        Label : 'Customer Info',
+        ID    : 'CustomerInfo',
+        Target: '@UI.FieldGroup#CustomerDetails',
+    }, ],  
+);
